@@ -1,0 +1,3 @@
+﻿  Homework.c
+D:\xuexi1\HomeWork\HomeWork\Homework\Homework\Homework.c(616,11): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+  Homework.vcxproj -> D:\xuexi1\HomeWork\HomeWork\Homework\x64\Debug\Homework.exe
