@@ -144,3 +144,48 @@
 //		printf("%c", a[j]);
 //}
 //基于堆栈解决问题1011——相邻相同字母删除;
+
+
+
+
+//超递增数列
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+int cmp(const void* a, const void* b) {
+	return *(int*)a - *(int*)b;
+}
+int main()
+{
+	int n;
+	while (scanf("%d", &n) != EOF)
+	{
+		int flag = 1; int add = 0; int* a;
+		a = (int*)malloc(n * sizeof(int));
+
+		for (int i = 0; i < n; i++)
+		{
+			scanf("%d", &a[i]);
+		}
+		if (a != NULL)
+		{
+			qsort(a, n, 4, cmp);
+		}
+		for (int i = 0; i < n; i++)
+		{
+			if (a[i] > add)
+				;
+			else
+			{
+				flag = 0;
+				break;
+			}
+			add += a[i];
+		}
+
+		if (flag)
+			printf("Yes\n");
+		else
+			printf("No\n");
+	}
+}
