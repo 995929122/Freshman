@@ -212,21 +212,107 @@
 // }
 
 //二级指针
-void test(int** ptr)
-{
-    printf("%d ",**ptr);
-}
-int main()
-{
-    int n=20;int *p=&n;int **pp=&p;
-    test(pp);
-    test(&p);
+// void test(int** ptr)
+// {
+//     printf("%d ",**ptr);
+// }
+// int main()
+// {
+//     int n=20;int *p=&n;int **pp=&p;
+//     test(pp);
+//     test(&p);
 
-    int* arr[10];
-    test(arr);//√
+//     int* arr[10];
+//     test(arr);//√
     
-    return 0;
-}
+//     return 0;
+// }
 
 
 //              5.函数指针
+// int Add(int x,int y)
+// {
+//     return x+y;   
+// }       //函数名就是函数的地址-&函数名=函数名-都是函数的地址
+// int main()
+// {
+//     int a=10,b=20;
+//     printf("%d\n",Add(a,b));
+
+//     int (*pa)(int ,int)=Add;
+//     printf("%d\n",pa(2,3));
+//     printf("%d\n",(pa)(2,3));
+//     printf("%d\n",(*pa)(2,3));      //这几种写法完全等效-当然底下两种纯纯逆天
+//     printf("%d\n",(**pa)(2,3));     //函数的调用：  函数名（参数）
+//     printf("%d\n",(***pa)(2,3));    //函数名=函数地址 -函数地址（参数）
+    
+//     return 0;
+// }
+
+
+// void Print(char* str)
+// {
+//     printf("%s\n",str);
+// }
+// int main()
+// {
+//     void (*p)(char*)=Print;
+//     (*p)("wdnmd");
+//     return 0;
+// }
+//  函数返回类型（*变量名）（函数参数类型）；
+
+
+//《C陷阱和缺陷》
+//代码1
+//  (*(void(*)())0)();
+//  void(*)()-这是一个函数指针类型-放在（）里-强制类型转换-
+//  将0强制转换成函数指针类型-该指针指向的函数是无参返回类型void-
+//  *对这个函数指针进行解引用-调用该地址处的函数
+
+
+//代码2
+//  void(*   signal(int,void(*)(int))   )(int);       //函数声明
+//  signal函数-第一个参数是int-第二个参数是函数指针类型-去掉函数名及其参数-
+//  剩void（*）（int）-函数的返回类型-函数指针-该函数指针指向的函数的参数是int，返回类型是void
+//  精简：
+//typedef void(*pfun_t)(int) ;//重命名该函数指针类型为pfun_t
+//pfun_t signal(int ,pfun_t);
+
+
+
+
+
+//              6.函数指针数组 
+int Add(int x,int y)
+{
+    return x+y;
+}
+int Sub(int x,int y)
+{
+    return x-y;
+}
+int Mul(int x,int y)
+{
+    return x*y;
+}
+int Div(int x,int y)
+{
+    return x/y;
+}
+int main()
+{
+    //用一个数组存放四个函数的地址-函数指针数组
+    int(*parr[4])(int, int)={Add,Sub,Mul,Div};
+    int i=0;
+    for(i=0;i<4;i++)
+    {
+        printf("%d\n",parr[i](6,3));
+    }
+    return 0;
+}
+//函数指针数组的用途：转移表
+
+char* (*pf)(char*,const char*)=my_strcpy;
+
+char* (*pfArr[4])(char*,const char*)={pf,pf,pf,pf};
