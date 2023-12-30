@@ -300,19 +300,53 @@ int Div(int x,int y)
 {
     return x/y;
 }
+// int main()
+// {
+//     //用一个数组存放四个函数的地址-函数指针数组
+//     int(*parr[4])(int, int)={Add,Sub,Mul,Div};
+//     int i=0;
+//     for(i=0;i<4;i++)
+//     {
+//         printf("%d\n",parr[i](6,3));
+//     }
+//     return 0;
+// }
+
+
+//函数指针数组的用途：转移表
+void menu()
+{
+    printf("****************************\n");
+    printf("** 1.Add          2.Sub  ***\n");
+    printf("** 3.Mul          4.Div  ***\n");
+    printf("******** 0.exit ************\n");
+}
 int main()
 {
-    //用一个数组存放四个函数的地址-函数指针数组
-    int(*parr[4])(int, int)={Add,Sub,Mul,Div};
-    int i=0;
-    for(i=0;i<4;i++)
+    int input=0;int x,y;
+    int(*parr[5])(int, int)={0,Add,Sub,Mul,Div};
+    do
     {
-        printf("%d\n",parr[i](6,3));
-    }
-    return 0;
+        menu();
+        scanf("%d",&input);
+        if(input>0&&input<5)
+        {
+            
+            scanf("%d%d",&x,&y);
+            printf("%d\n",parr[input](x,y));
+        }
+        else if(input==0)
+        {
+            ;
+        }
+        else{
+            printf("你妈的\n");Sleep(2000);
+        }
+
+    } while (input);
+    //这么做避免了重复繁琐的switch case语句的使用 化简了代码
+    
 }
-//函数指针数组的用途：转移表
 
-char* (*pf)(char*,const char*)=my_strcpy;
-
-char* (*pfArr[4])(char*,const char*)={pf,pf,pf,pf};
+//char* (*pf)(char*,const char*)=my_strcpy;
+//char* (*pfArr[4])(char*,const char*)={pf,pf,pf,pf};
