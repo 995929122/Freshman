@@ -1,5 +1,5 @@
 #include<stdio.h>
-
+#include<windows.h>
 
 //const int*p=&a;
 //可以通过a改变a的值 可以给p赋别的地址。不能通过*p改变量的值
@@ -284,22 +284,22 @@
 
 
 //              6.函数指针数组 
-int Add(int x,int y)
-{
-    return x+y;
-}
-int Sub(int x,int y)
-{
-    return x-y;
-}
-int Mul(int x,int y)
-{
-    return x*y;
-}
-int Div(int x,int y)
-{
-    return x/y;
-}
+// int Add(int x,int y)
+// {
+//     return x+y;
+// }
+// int Sub(int x,int y)
+// {
+//     return x-y;
+// }
+// int Mul(int x,int y)
+// {
+//     return x*y;
+// }
+// int Div(int x,int y)
+// {
+//     return x/y;
+// }
 // int main()
 // {
 //     //用一个数组存放四个函数的地址-函数指针数组
@@ -314,39 +314,72 @@ int Div(int x,int y)
 
 
 //函数指针数组的用途：转移表
-void menu()
-{
-    printf("****************************\n");
-    printf("** 1.Add          2.Sub  ***\n");
-    printf("** 3.Mul          4.Div  ***\n");
-    printf("******** 0.exit ************\n");
-}
-int main()
-{
-    int input=0;int x,y;
-    int(*parr[5])(int, int)={0,Add,Sub,Mul,Div};
-    do
-    {
-        menu();
-        scanf("%d",&input);
-        if(input>0&&input<5)
-        {
+// void menu()
+// {
+//     printf("****************************\n");
+//     printf("** 1.Add          2.Sub  ***\n");
+//     printf("** 3.Mul          4.Div  ***\n");
+//     printf("******** 0.exit ************\n");
+// }
+// int main()
+// {
+//     int input=0;int x,y;
+//     int(*parr[5])(int, int)={0,Add,Sub,Mul,Div};
+//     do
+//     {
+//         menu();
+//         scanf("%d",&input);
+//         if(input>0&&input<5)
+//         {
             
-            scanf("%d%d",&x,&y);
-            printf("%d\n",parr[input](x,y));
-        }
-        else if(input==0)
-        {
-            ;
-        }
-        else{
-            printf("你妈的\n");Sleep(2000);
-        }
+//             scanf("%d%d",&x,&y);
+//             printf("%d\n",parr[input](x,y));
+//         }
+//         else if(input==0)
+//         {
+//             ;
+//         }
+//         else{
+//             printf("你妈的\n");Sleep((int)1000);
+//         }
 
-    } while (input);
-    //这么做避免了重复繁琐的switch case语句的使用 化简了代码
+//     } while (input);
+//     //这么做避免了重复繁琐的switch case语句的使用 化简了代码
     
-}
+// }
 
 //char* (*pf)(char*,const char*)=my_strcpy;
 //char* (*pfArr[4])(char*,const char*)={pf,pf,pf,pf};
+
+
+
+
+
+//              7.指向函数指针数组的指针
+// int main()
+// {
+//     int (*pfArr[4])(int,int);
+//     int (*(*ppfArr[4]))(int,int)=&pfArr;
+//     //ppfArr是一个数组指针-指针指向的数组由4个元素
+//     //指向的数组的每个元素类型是一个函数指针int(*)(int,int)
+
+//     return 0;
+// }
+
+
+
+
+//                8.回调函数
+//  一个通过函数指针调用的函数
+//如果你把函数的指针（地址）作为参数传递给另一个函数，
+//当这个函数被用来调用其所指向的函数时，我们就说这是回调函数
+//回调函数不是由该函数的实现方直接调用，而是在特定的事件或条件发生时
+//由另外的一方调用的，用于对该事件或条件进行响应
+
+//比如qsort里的cmp  
+
+
+
+
+
+

@@ -209,47 +209,47 @@
 //}
 
 
-#include<stdio.h>
-#include<math.h>
-
-int main()
-{
-	int n;
-	int arr[50] = {0};
-	arr[0] = 2;
-	int j = 3;
-	for (int i = 1; i < 50;)
-	{
-	
-		int k = 0;
-		for ( k = 2; k < sqrt(j); k++)
-		{
-			if (j % k == 0)
-			{
-				break;
-			}
-		}
-		if (k > sqrt(j))
-		{
-			arr[i] = j;
-			i++;
-		}
-		j++;
-	}
-	while (scanf("%d", &n) != EOF)
-	{
-		int ROW = arr[n - 1] + 1;
-		int COL = arr[n - 2] + 1;
-		if (n % 2 == 0)
-		{
-
-		}
-		else
-		{
-
-		}
-	}
-}
+//#include<stdio.h>
+//#include<math.h>
+//
+//int main()
+//{
+//	int n;
+//	int arr[50] = {0};
+//	arr[0] = 2;
+//	int j = 3;
+//	for (int i = 1; i < 50;)
+//	{
+//	
+//		int k = 0;
+//		for ( k = 2; k < sqrt(j); k++)
+//		{
+//			if (j % k == 0)
+//			{
+//				break;
+//			}
+//		}
+//		if (k > sqrt(j))
+//		{
+//			arr[i] = j;
+//			i++;
+//		}
+//		j++;
+//	}
+//	while (scanf("%d", &n) != EOF)
+//	{
+//		int ROW = arr[n - 1] + 1;
+//		int COL = arr[n - 2] + 1;
+//		if (n % 2 == 0)
+//		{
+//
+//		}
+//		else
+//		{
+//
+//		}
+//	}
+//}
 
 //#include<stdio.h>
 //
